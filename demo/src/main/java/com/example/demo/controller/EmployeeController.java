@@ -2,6 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Employee;
 import com.example.demo.service.EmployeeService;
+import com.example.demo.userDefinedException.EmployeeNotFoundException;
+import com.example.demo.userDefinedException.GlobalExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +43,16 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+
+    @GetMapping("user/{id}")
+    public ResponseEntity<Employee> getEmployee(@PathVariable Integer id) throws EmployeeNotFoundException {
+
+        Employee employee=empService.getEmployee(id).orElseThrow(()-> new EmployeeNotFoundException("Employee Not Found"+id));
+
+        return ResponseEntity.status(HttpStatus.OK).body(employee);
+    }
+
+
     @DeleteMapping("user/{id}")
     public ResponseEntity<String> deleteUser(@PathVariable Integer id){
         boolean isDelete=empService.deleteUser(id);
@@ -51,4 +63,6 @@ public class EmployeeController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User Not Found");
         }
     }
+
+
 }

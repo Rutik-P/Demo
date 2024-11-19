@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service("empService")
 public class EmployeeServiceImpl implements EmployeeService {
@@ -32,6 +33,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         else {
             return false;
         }
+    }
+
+    @Override
+    public Optional<Employee> getEmployee(Integer id) {
+        if(empRepo.existsById(id)){
+            return empRepo.findById(id);
+        }
+        else{
+            return Optional.empty();
+        }
+
+
     }
 
 

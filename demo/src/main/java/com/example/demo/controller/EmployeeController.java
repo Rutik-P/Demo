@@ -57,7 +57,7 @@ public class EmployeeController {
     public ResponseEntity<String> deleteUser(@PathVariable Integer id){
         boolean isDelete=empService.deleteUser(id);
         if(isDelete){
-            return ResponseEntity.status(HttpStatus.FOUND).body("User Deleted Succesfuly");
+            return ResponseEntity.status(HttpStatus.FOUND).body("User Deleted Successfully");
         }
         else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User Not Found");

@@ -19,7 +19,7 @@ public class EmployeeController {
 
     @GetMapping("/get")
     public  String getData(){
-        return "Data is Present";
+        return "Data is Present";//status(HttpStatus.CREATED).body("HTTP Status will be CREATED ");
     }
 
     @GetMapping("/info")
@@ -57,7 +57,7 @@ public class EmployeeController {
     public ResponseEntity<String> deleteUser(@PathVariable Integer id){
         boolean isDelete=empService.deleteUser(id);
         if(isDelete){
-            return ResponseEntity.status(HttpStatus.FOUND).body("User Deleted Successfully");
+            return ResponseEntity.status(HttpStatus.FOUND).body("User Deleted Succesfuly");
         }
         else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User Not Found");

@@ -9,4 +9,6 @@ public interface EmployeeService {
     void createuser(Employee employee);
 
     List<Employee> getAllEmployee();
+
+    boolean deleteUser(Integer id);
 }

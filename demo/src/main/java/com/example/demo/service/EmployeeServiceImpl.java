@@ -22,4 +22,17 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> getAllEmployee() {
         return empRepo.findAll();
     }
+
+    @Override
+    public boolean deleteUser(Integer id) {
+        if(empRepo.existsById(id)) {
+             empRepo.deleteById(id);
+             return  true;
+        }
+        else {
+            return false;
+        }
+    }
+
+
 }

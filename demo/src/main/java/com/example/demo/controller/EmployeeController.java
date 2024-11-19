@@ -19,7 +19,7 @@ public class EmployeeController {
 
     @GetMapping("/get")
     public  String getData(){
-        return "Data is Present";//status(HttpStatus.CREATED).body("HTTP Status will be CREATED ");
+        return "Data is Present";
     }
 
     @GetMapping("/info")

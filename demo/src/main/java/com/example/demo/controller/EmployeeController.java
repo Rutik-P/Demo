@@ -27,6 +27,8 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.CREATED).body("HTTP Status will be CREATED ");
     }
 
+    
+
     @PostMapping("/create")
     public ResponseEntity<String> createUser(@RequestBody Employee employee){
         empService.createuser(employee);
